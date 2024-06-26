@@ -19,6 +19,8 @@ int main(){
 	//connect to server
 	connect(clientfd,(struct sockaddr *)&serverAddr,sizeof(serverAddr));
 	printf("Sending data to server at port:6265\n");
+	
+	//send message to server
 	strcpy(buffer, "Hello there, I am client\n");
 	send(clientfd,buffer,sizeof(buffer),0);
 	close(clientfd);
