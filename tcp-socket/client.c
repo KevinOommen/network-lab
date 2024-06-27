@@ -21,10 +21,13 @@ int main(){
 	printf("Sending data to server at port:6265\n");
 	
 	//send message to server
-	strcpy(buffer, "Hello there, I am client\n");
+	strcpy(buffer, "Hello there, I am client, How are you doing?\n");
 	send(clientfd,buffer,sizeof(buffer),0);
+	
+	//receive message from server
+	recv(clientfd,buffer,sizeof(buffer),0);
+	printf("Data Received from server:%s",buffer);
+	
 	close(clientfd);
-
-
 	return 0;
 }

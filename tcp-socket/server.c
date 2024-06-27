@@ -31,8 +31,13 @@ int main()
 	clientfd = accept(serverfd,(struct sockaddr *)&clientAddr,&clientAddrSize);
 
 	//receive data from client
-	recv(clientfd, buffer, 1024,0);
+	recv(clientfd,buffer,sizeof(buffer),0);
 	printf("Data Received from client: %s",buffer);
+	
+	//send data to client
+	strcpy(buffer,"Hi client,this is server\n");
+	printf("Sending data to client");
+	send(clientfd,buffer,sizeof(buffer),0);
 	
 	close(clientfd);
 	close(serverfd);
