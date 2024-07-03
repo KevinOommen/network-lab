@@ -34,6 +34,10 @@ int main(){
 		printf("Got: EOF");
 		break;
 		}
+	else if(strncmp(buffer,"NOF",3)==0){
+		printf("FILE NOT FOUND on server!!!\n");
+		break;
+		}
 	printf("%s",buffer);
 	}
 	

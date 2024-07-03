@@ -15,7 +15,7 @@ int main()
 	//create server socket and its address
 	serverfd = socket(AF_INET,SOCK_STREAM,0);
 	serverAddr.sin_family = AF_INET;
-	serverAddr.sin_port = htons(6265);
+	serverAddr.sin_port = htons(5600);
 	serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
 	
 	//bind socket
@@ -23,7 +23,7 @@ int main()
 	
 	//listen for connections
 	if(listen(serverfd,5)==0)
-		printf("Listening at port:6265\n");
+		printf("Listening at port:5600\n");
 	else
 		printf("Unable to listen!!!!Try Again");
 	

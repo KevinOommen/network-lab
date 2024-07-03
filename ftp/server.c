@@ -39,6 +39,7 @@ int main()
 	fp=fopen(buffer,"r");
 	if(fp==NULL){
 		printf("FILE NOT FOUND!!!\n");
+		send(clientfd,"NOF",sizeof("NOF"),0);
 		exit(1);
 	}
 	

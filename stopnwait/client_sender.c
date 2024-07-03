@@ -30,7 +30,7 @@ int main(){
 		if(ack_received){
 			printf("Sent: Frame %d\n",frameno);
 			if(i==4){
-				sprintf(buffer,"Corrupted Frame %d",frameno);
+				sprintf(buffer,"Lost Frame %d",frameno);
 				send(clientfd,buffer,sizeof(buffer),0);
 			}
 			else{
