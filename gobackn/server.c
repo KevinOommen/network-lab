@@ -6,7 +6,8 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <time.h>
+#include "color.h"
 
 int main(){
 	int serverfd,clientfd;
@@ -38,18 +39,37 @@ int main(){
 	printf("Connected to client\n");
 	
 	//receive frames from sender client
-	while(nextframeno!=8){
+	while(1){
 		recv(clientfd,buffer,sizeof(buffer),0);
 		frameno = atoi(buffer);
-		printf("Received: Frame %d\n",frameno);
+		srand(time(0));
+		sleep(2);
+		
 		if(frameno==nextframeno){
+			
+			if(rand()%50<10){
+				printf("Lost Frame:%d\n",frameno);
+				continue;
+			}
 			nextframeno++;
+			//printf("Received: Frame %d\n",frameno);
+			LOG_GREEN("Received: Frame ");
+			printf("%d\n",frameno);
 			printf("Sent: ACK %d\n",nextframeno);
 			sprintf(buffer,"%d",nextframeno);
 			send(clientfd,buffer,sizeof(buffer),0);
 		}
-		else
-			printf("Discarded frame %d , out of order",frameno);	
+		//exit server
+		else if(frameno==-1){
+			printf("Received %d Frames\n",nextframeno);
+			break;
+		}//
+		else{
+			printf("Received: Frame %d\n",frameno);
+			printf("Discarded frame %d ,out of order\n",frameno);	
+		}
+		
+			
 	}//while	
 	close(clientfd);
 	close(serverfd);

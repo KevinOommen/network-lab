@@ -68,10 +68,18 @@ int main(){
 			//check if ack is valid
 			if(ackno==winstart+1){
 				winstart++;
-				winend = (winend<framenum)?  ++winend: winend;				
-			}//if valid ack
+				winend = (winend<framenum-1)?  ++winend: winend;				
+			}
+			else{
+				printf("Invalid: ACK %d\n",ackno);
+				printf("Resending frames %d to %d\n",winstart,winend);
+				i = winstart;
+				continue; 
+			}
 		}//else	received ack
 	}//while
+	sprintf(buffer,"%d",-1);
+	send(clientfd,buffer,sizeof(buffer),0);
 	close(clientfd);
 	return 0;
 }
