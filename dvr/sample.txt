@@ -1,0 +1,22 @@
+Below is the sample input and output for the DVR program
+
+Enter no of routers:3
+Enter cost matrix(n=3):-
+Router 1: 0 1 5
+
+Router 2: 1 0 2
+
+Router 3: 5 2 0
+
+Shortest Path - Routing Table
+From Node 0 to node 0 = 0 via node 0
+From Node 0 to node 1 = 1 via node 1
+From Node 0 to node 2 = 3 via node 1
+
+From Node 1 to node 0 = 1 via node 0
+From Node 1 to node 1 = 0 via node 1
+From Node 1 to node 2 = 2 via node 2
+
+From Node 2 to node 0 = 3 via node 1
+From Node 2 to node 1 = 2 via node 1
+From Node 2 to node 2 = 0 via node 2
