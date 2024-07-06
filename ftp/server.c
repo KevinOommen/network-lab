@@ -50,7 +50,7 @@ int main()
 	}
 	send(clientfd,"EOF",sizeof("EOF"),0);
 	printf("File sent\n");
-	
+	fclose(fp);
 	close(clientfd);
 	close(serverfd);
 	
