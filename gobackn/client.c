@@ -41,7 +41,7 @@ int main(){
 	winend = winstart + (win_size-1);
 	i=winstart;
 	
-	while(winstart<winend){	
+	while(winstart<=winend){	
 		//send frames in window
 		while(i<=winend){
 			sprintf(buffer,"%d",i);
